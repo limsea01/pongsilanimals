@@ -80,14 +80,99 @@ body{font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif;color:var
 .ft a{display:block;font-size:12px;margin-bottom:6px}
 .ft .bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(0,0,0,.08);margin-top:30px;padding-top:20px;font-size:11px}
 .ft .bot .logo{border:2px solid #333;border-radius:50%;padding:3px 12px;font-weight:800;font-size:13px}
-@media (max-width:860px){
-  .h1{font-size:24px}.h2{font-size:20px}
-  .split,.duo,.space,.apply .grid{grid-template-columns:1fr}.split .img{height:300px}.split .txt{padding:30px 20px}
-  .duo{padding:60px 0;gap:24px}.duo .pics div:first-child{height:220px}.duo .pics div:last-child{height:180px}
-  .dex{grid-template-columns:repeat(2,1fr)}
-  .space{padding:60px 0}.space .img{height:260px}.space .txt{padding:24px 0 0}
-  .daily{border-radius:0}.daily .row div{height:auto}.daily .row,.daily .cap{gap:10px}
-  .ft{margin:30px 12px}.ft .cols{grid-template-columns:1fr 1fr}
+/* 화면 크기에 따른 레이아웃 및 터치 접근성 */
+html{scroll-behavior:smooth;scroll-padding-top:124px}
+body{overflow-wrap:anywhere}
+.in{width:100%}
+.split>*,.duo>*,.space>*,.grid>*,.dex>*,.ft .cols>*{min-width:0}
+.h1{font-size:clamp(26px,3vw,38px)}
+.h2{font-size:clamp(22px,2.4vw,30px)}
+.p{font-size:14px;line-height:1.85}
+.eb{font-size:11px}
+.hd .r a,.hd .menu{min-height:44px;display:inline-flex;align-items:center}
+.hd .r a{justify-content:center;min-width:44px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--pink);outline-offset:4px}
+.split{grid-template-columns:minmax(0,2fr) minmax(0,1fr);min-height:0;align-items:stretch}
+.split .img{align-self:stretch}
+.split .img .site-photo{height:100%;aspect-ratio:4/3;object-fit:cover}
+.split .txt{padding:40px 32px;justify-content:center}
+.split .ul{align-self:flex-start}
+.duo{gap:40px}
+.dex{grid-template-columns:repeat(4,minmax(0,1fr))}
+.dex .cap{gap:8px;font-size:14px}
+.dex .cap small{font-size:12px}
+.dex .cap small:last-child:not(:first-child){flex-shrink:0}
+.dex-h,.daily .head{gap:16px}
+.dex-h>.ul{flex-shrink:0;min-height:44px;display:inline-flex;align-items:center}
+.daily .row{grid-template-columns:repeat(2,minmax(0,1fr))}
+.daily figure{margin:0;min-width:0}
+.daily .wallpaper{aspect-ratio:16/9;overflow:hidden}
+.daily figcaption{margin-top:10px;font-size:13px}
+.daily figcaption a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.field input,.field select{min-width:0;font-size:16px}
+.field span{font-size:13px}
+.submit{font-size:15px;min-height:50px}
+.ft .cols{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ft a{min-height:36px;display:flex;align-items:center}
+.ft .bot{gap:24px}
+.ft .bot .logo{flex-shrink:0}
+.modal-box{max-height:calc(100dvh - 32px);overscroll-behavior:contain}
+@media (max-width:1024px){
+  .dex{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .split{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
+  .split .txt{padding:30px 24px}
+  .duo{padding:80px 20px;gap:28px}
+  .duo .pics div:first-child{height:280px}
+  .duo .pics div:last-child{height:230px}
+  .space{padding:80px 20px}
+  .space .txt{padding-left:32px}
+  .apply .grid{gap:32px}
+  .ft{margin:32px 20px;padding:32px 24px}
+}
+@media (max-width:760px){
+  html{scroll-padding-top:96px}
+  .hd{height:80px}
+  .hd .logo{width:76px;height:76px}
+  .hd .r{gap:4px}
+  .intro{padding-top:40px;padding-bottom:28px}
+  .split,.duo,.space,.apply .grid{grid-template-columns:minmax(0,1fr)}
+  .split .img .site-photo{height:auto;aspect-ratio:auto}
+  .split .txt{padding:30px 24px}
+  .duo{padding:56px 20px;gap:28px}
+  .duo .pics{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+  .duo .pics div:first-child{height:auto;aspect-ratio:4/5}
+  .duo .pics div:last-child{height:auto;aspect-ratio:1}
+  .dex{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}
+  .space{padding:56px 20px}
+  .space .img{height:auto;aspect-ratio:4/3;overflow:hidden}
+  .space .txt{padding:24px 0 0}
+  .daily{padding:32px 0;border-radius:0}
+  .daily .row{grid-template-columns:minmax(0,1fr);gap:24px}
+  .daily .row .wallpaper{height:auto}
+  .apply{margin-top:48px;padding:40px 20px}
+  .apply .grid{gap:28px}
+  .ft .cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}
+  .ft a{min-height:44px}
+  .ft .bot{align-items:flex-start}
+}
+@media (max-width:380px){
+  .in{padding-left:16px;padding-right:16px}
+  .hd .menu{font-size:11px}
+  .hd .r{font-size:11px}
+  .hd .r a{min-width:36px}
+  .h1{font-size:25px}
+  .h2{font-size:22px}
+  .dex-h{align-items:flex-start}
+  .dex .cap{flex-wrap:wrap;gap:4px}
+  .dex .cap b{font-size:13px}
+  .ft{margin:24px 12px;padding:24px 18px}
+  .ft .cols{grid-template-columns:minmax(0,1fr);gap:20px}
+  .ft .bot{flex-direction:column;gap:16px}
+  .modal{padding:12px}
+  .modal-box{padding:24px 18px;max-height:calc(100dvh - 24px)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
 }
 </style>
 <!-- GA4 (Day 34에 여기에 붙이기) -->
@@ -140,8 +225,16 @@ body{font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif;color:var
 <section class="daily">
   <div class="in">
     <div class="head"><div><span class="eb">Pongsil in daily life</span><h2 class="h h2">일상 속으로 데려가는 퐁실.</h2></div></div>
-    <div class="row"><div><img class="site-photo" src="assets/images/snowball-wallpaper.png" alt="눈싸움 하는 퐁실 애니멀즈" loading="lazy" decoding="async"></div><div><img class="site-photo" src="assets/images/ski-wallpaper.png" alt="스키 타는 퐁실 애니멀즈" loading="lazy" decoding="async"></div></div>
-    <div class="cap"><a href="assets/images/snowball-wallpaper.png" download="pongsil-snowball.png">눈싸움 하는 퐁실 애니멀즈 사진 다운</a><a href="assets/images/ski-wallpaper.png" download="pongsil-ski.png">스키 타는 퐁실 애니멀즈 사진 다운</a></div>
+    <div class="row">
+      <figure>
+        <div class="wallpaper"><img class="site-photo" src="assets/images/snowball-wallpaper.png" alt="눈싸움 하는 퐁실 애니멀즈" loading="lazy" decoding="async"></div>
+        <figcaption><a href="assets/images/snowball-wallpaper.png" download="pongsil-snowball.png">눈싸움 하는 퐁실 애니멀즈 사진 다운</a></figcaption>
+      </figure>
+      <figure>
+        <div class="wallpaper"><img class="site-photo" src="assets/images/ski-wallpaper.png" alt="스키 타는 퐁실 애니멀즈" loading="lazy" decoding="async"></div>
+        <figcaption><a href="assets/images/ski-wallpaper.png" download="pongsil-ski.png">스키 타는 퐁실 애니멀즈 사진 다운</a></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
