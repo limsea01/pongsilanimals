@@ -309,5 +309,12 @@ src="https://www.facebook.com/tr?id=2901962246863763&ev=PageView&noscript=1"
     </div>
   </div>
 </div><script src="assets/privacy.js"></script>
+<script>
+  document.querySelectorAll('#cta-main, #cta-top').forEach(function (link) {
+    link.addEventListener('click', function () {
+      gtag('event', 'cta_click', { cta_id: link.id });
+    });
+  });
+</script>
 </body>
 </html>
